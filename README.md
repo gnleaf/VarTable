@@ -2,6 +2,7 @@
 A class for printing a table on Shell
 
 # Example
+## Code
 ```C++
 #include <iostream>  
 #include "VarTable.h"  
@@ -28,7 +29,7 @@ int main()
 }
 ```
 
-# Display
+## Display
 
 BASIC Style:  
 ```
