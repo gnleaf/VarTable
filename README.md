@@ -1,6 +1,8 @@
 # VarTable
 A class for printing a table on Shell
 
+Requries C++11
+
 # Example
 ## Code
 ```C++
