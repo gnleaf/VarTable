@@ -2,6 +2,7 @@
 A class for printing a table on Shell
 
 # Example
+```C++
 #include <iostream>  
 #include "VarTable.h"  
 
@@ -25,10 +26,12 @@ int main()
     vt.setPrintStyle(PrintStyle::FULL);  
     vt.print(std::cout);  
 }
+```
 
 # Display
 
 BASIC Style:  
+```
 +------------------+------------------+-----+------------------+  
 |       Name       |      Weight      | Age |      Brother     |  
 +------------------+------------------+-----+------------------+  
@@ -36,21 +39,26 @@ BASIC Style:
 | Jim Green        |            175.3 |  17 | Hart Green       |  
 | Yeqian           |            100.3 |   4 | Yeyicheng        |  
 +------------------+------------------+-----+------------------+  
+```
 
 EMPTY Style:  
+```
         Name              Weight        Age        Brother  
   HanMei                        160.2    16   HanHan  
   Jim Green                     175.3    17   Hart Green  
   Yeqian                        100.3     4   Yeyicheng  
+```
 
 SIMPLE Style:  
+```
         Name              Weight        Age        Brother  
  ------------------ ------------------ ----- ------------------  
   HanMei                        160.2    16   HanHan  
   Jim Green                     175.3    17   Hart Green  
   Yeqian                        100.3     4   Yeyicheng  
-
+```
 FULL Style:  
+```
 +------------------+------------------+-----+------------------+  
 |       Name       |      Weight      | Age |      Brother     |  
 +------------------+------------------+-----+------------------+  
@@ -60,3 +68,4 @@ FULL Style:
 +------------------+------------------+-----+------------------+  
 | Yeqian           |            100.3 |   4 | Yeyicheng        |  
 +------------------+------------------+-----+------------------+  
+```
