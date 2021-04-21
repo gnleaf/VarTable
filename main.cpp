@@ -5,8 +5,7 @@ using namespace std;
 
 int main()
 {
-    VarTable<const char*, double, int, const char*> vt({ "Name", "Weight", "Age", "Brother" },
-        10);
+    VarTable<const char*, double, int, const char*> vt({ "Name", "Weight", "Age", "Brother" }, 10);
     //vt.setColumnFormat({VarTableColumnFormat::AUTO, VarTableColumnFormat::SCIENTIFIC, VarTableColumnFormat::SCIENTIFIC, VarTableColumnFormat::AUTO});
     //vt.setColumnPrecision({1, 2, 1, 2});
     vt.addRow("HanMei", 160.2, 16, "HanHan");

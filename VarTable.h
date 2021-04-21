@@ -72,8 +72,7 @@ public:
         _num_columns(std::tuple_size<DataTuple>::value),
         _static_column_size(static_column_size),
         _cell_padding(cell_padding),
-        _print_style(PrintStyle::BASIC),
-        _alignment_style(std::tuple_size<DataTuple>::value, AlignmentStyle::LEFT)
+        _print_style(PrintStyle::BASIC)
     {
         assert(headers.size() == _num_columns);
     }
@@ -172,8 +171,10 @@ public:
     /**
      * Set alignment style
      */
-    void setAlignmentStyle(const AlignmentStyle& alignment_style)
+    void setAlignmentStyle(const std::vector<AlignmentStyle>& alignment_style)
     {
+        assert(alignment_style.size() == std::tuple_size<DataTuple>::value);
+
         _alignment_style = alignment_style;
     }
 
@@ -203,6 +204,23 @@ protected:
             return std::right;
         else
             return std::internal;
+    }
+
+    // Attempts to figure out the correct justification for the data
+    // If it's a floating point value
+    template <typename T,
+        typename = typename std::enable_if<
+        std::is_arithmetic<typename std::remove_reference<T>::type>::value>::type>
+        static align_type justify_empty(int /*firstchoice*/)
+    {
+        return std::right;
+    }
+
+    // Otherwise
+    template <typename T>
+    static align_type justify_empty(long /*secondchoice*/)
+    {
+        return std::left;
     }
 
     /**
@@ -264,8 +282,11 @@ protected:
                 stream << std::fixed << std::setprecision(2);
         }
 
-        stream << std::string(_cell_padding, ' ') << std::setw(_column_sizes[I])
-            << justify(_alignment_style[I]);
+        stream << std::string(_cell_padding, ' ') << std::setw(_column_sizes[I]);
+        if (!_alignment_style.empty())
+            stream << justify(_alignment_style[I]);
+        else
+            stream << justify_empty<decltype(val)>(0);
         stream << val << std::string(_cell_padding, ' ');
 
         if (_print_style != PrintStyle::SIMPLE && _print_style != PrintStyle::EMPTY)
