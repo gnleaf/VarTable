@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VAR_TABLE_H_
+#define VAR_TABLE_H_
 
 #include <iostream>
 #include <iomanip>
@@ -473,3 +474,5 @@ protected:
     /// Precision For each column
     std::vector<int> _precision;
 };
+
+#endif  // VAR_TABLE_H_
