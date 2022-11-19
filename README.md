@@ -7,7 +7,7 @@ Requries C++11
 ## Code
 ```C++
 #include <iostream>  
-#include "VarTable.h"  
+#include "var_table.h"  
 
 using namespace std;  
 
